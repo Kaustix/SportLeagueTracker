@@ -4,7 +4,7 @@
   "description": "Sport Team League and Game Tracker",
   "main": "server.js",
   "author": "Kiernan Lamarche",
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/Kaustix/SportLeagueTracker.git"
   },
@@ -19,6 +19,7 @@
     "body-parser": "^1.15.2",
     "config": "^1.24.0",
     "express": "^4.14.0",
-    "mongoose": "^4.6.8"
+    "mongoose": "^4.6.8",
+    "underscore": "^1.8.3"
   }
 }

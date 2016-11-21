@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 
 const GameSchema = new mongoose.Schema({
-  time: {type: Date, default: Date.now, required: true},
-  place: {type: string, required: true},
-  address: {type: string},
-  opponent: {type: string},
-  home_away: {type: string},
+  date: {type: Date, default: Date.now, required: true},
+  place: {type: String, required: true},
+  address: {type: String},
+  opponent: {type: String},
+  home_away: {type: String},
   score: {
-    team: {type: number},
-    opponent: {type: number}
+    team: {type: Number},
+    opponent: {type: Number}
   }
 });
 
-export default Game = mongoose.model("Game", GameSchema);
+export default mongoose.model("Game", GameSchema);

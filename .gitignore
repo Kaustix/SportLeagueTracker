@@ -38,4 +38,5 @@ bower_components
 .idea
 
 # ----- CUSTOM IGNORES ----- #
-
+/config/development.json
+/config/production.json
