@@ -1,5 +1,5 @@
 import express from 'express';
-import * as GameRoutes from './game';
+import * as GameRoutes from './gameRoutes';
 
 const router = express.Router();
 

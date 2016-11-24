@@ -1,10 +1,20 @@
-import { Game } from '../models'
+import {Game} from '../models'
 import _ from 'underscore';
 
 export function all(req, res) {
   Game.find()
-    .then(games => res.json(games))
-    .catch(err => {res.send(err)});
+    .then(games => {
+      console.log("then called" + games);
+      res(games);
+    })
+    .catch(err => {
+      console.log("err called");
+      res.send(err);
+    });
+}
+
+export function s(res) {
+  res("hello");
 }
 
 export function create(req, res) {

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const GameSchema = new mongoose.Schema({
-  date: {type: Date, default: Date.now, required: true},
+  date: {type: Date, required: true},
   place: {type: String, required: true},
   address: {type: String},
   opponent: {type: String},
@@ -12,4 +12,11 @@ const GameSchema = new mongoose.Schema({
   }
 });
 
-export default mongoose.model("Game", GameSchema);
+let Game;
+if (mongoose.models.Game) {
+  Game = mongoose.model("Game");
+} else {
+  Game = mongoose.model("Game", GameSchema);
+}
+
+export default Game;
