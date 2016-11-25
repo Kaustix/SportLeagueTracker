@@ -6,17 +6,13 @@ export function all(req, res) {
     Game.find()
       .then(games => {
         res.json(games);
-        return resolve();
+        resolve();
       })
       .catch(err => {
         res.send(err);
-        return reject();
+        reject();
       });
-  })
-}
-
-export function s(res) {
-  res("hello");
+  });
 }
 
 export function create(req, res) {

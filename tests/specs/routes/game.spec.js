@@ -2,37 +2,44 @@ import sinon from '../../imports/sinon';
 import gameFactory from '../../modelFactories/gameFactory';
 
 import {Game} from '../../../api/models';
-import {all, s} from '../../../api/routes/gameRoutes';
+import {all} from '../../../api/routes/gameRoutes';
 
 describe('Game Routes', () => {
   describe('GET ALL games', () => {
 
     let GameMock;
+    let Games;
     beforeEach(() => {
       GameMock = sinon.mock(Game);
+      Games = [gameFactory.build(), gameFactory.build()];
     });
 
     afterEach(() => {
       GameMock.restore();
     });
 
-    it ('should get all games', () => {
-      const games = [gameFactory.build(), gameFactory.build()];
-      GameMock.expects('find').resolves(games);
+    it('should get all games', () => {
+      GameMock.expects('find').resolves(Games);
 
-      const req = { params: {} };
-      const res = { json: sinon.stub()};
+      const req = {params: {}};
+      const res = {json: sinon.stub()};
 
       all(req, res).then(() => {
-        res.json.should.have.been.calledOnce;
+        res.json.should.have.been.calledWith(Games);
       });
     });
 
-    it ('should get error message on error', () => {
-        const res = sinon.stub();
-        s(res);
-        res.should.have.been.calledOnce;
-    });
+    it('should send error when failed', () => {
+      const error = new Error('error');
+      GameMock.expects('find').rejects(error);
+
+      const req = {params: {}};
+      const res = {send: sinon.stub()};
+
+      all(req, res).catch(() => {
+        res.send.should.have.been.calledWith(error);
+      });
+    })
 
   });
 });
