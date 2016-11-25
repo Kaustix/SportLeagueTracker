@@ -21,20 +21,17 @@ describe('Game Routes', () => {
       GameMock.expects('find').resolves(games);
 
       const req = { params: {} };
-      const res = sinon.stub();
+      const res = { json: sinon.stub()};
 
-      //const res = { json: sinon.stub()};
-
-      all(req, res);
-
-      res.should.have.been.calledOnce;
+      all(req, res).then(() => {
+        res.json.should.have.been.calledOnce;
+      });
     });
 
     it ('should get error message on error', () => {
         const res = sinon.stub();
         s(res);
         res.should.have.been.calledOnce;
-        //res.should.haven.been.calledOnce;
     });
 
   });
