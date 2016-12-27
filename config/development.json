@@ -1,5 +1,5 @@
 {
   "database": {
-    "connection": "mongodb://sa:asdf123!@ds157187.mlab.com:57187/sportleaguetracker"
+    "connection": ""
   }
 }
